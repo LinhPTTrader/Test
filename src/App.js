@@ -2,23 +2,40 @@ import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { increaseCounter, decreaseCounter } from './redux/action/counterAction';
-const App = () => {
-  const count = useSelector(state => state.counter.count);
-  const dispatch = useDispatch();
+import Car from './component/Mycomponent';
+import React from 'react';
+import Infocarcomponent from './component/Infocarcomponent';
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <div>Count = {count}</div>
-        <button onClick={() => dispatch(increaseCounter())}>Increase</button>
-        <button onClick={() => dispatch(decreaseCounter())}>Decrease</button>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  state = {
+    name: 'LinhPhan',
+    address: 'TPHCM',
+    age: 18
+  }
+  changeUser = (event) => {
+    this.setState({
+      name: 'KhanhHa'
+    })
+  }
+  changeAddress = (event) => {
+    this.setState({
+      address: event.target.value
+    })
+  }
+  submitForm = (event) => {
+    event.preventDefault();
+    console.log(this.state);
+  }
+  render() {
+    return (
+      <div>
+        <Infocarcomponent></Infocarcomponent>
+        <Car></Car>
+      </div>
+    )
+  }
 }
+
 
 export default App;
